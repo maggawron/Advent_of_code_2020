@@ -2,10 +2,8 @@ def best_result(line):
     print(line)
     time_stamp = line[0][0]
     multiplier = line[0][0]
-    done = False
-    checked = [1,0,0,0,0,0,0,0,0]
-    while not done:
-        print(time_stamp, sum(checked), "/", len(line))
+    checked = [1] + [0] * (len(line)-1)
+    while True:
         for ind, it in enumerate(line):
             number, offset = it
             if (time_stamp + offset) % number == 0 and checked[ind] == 0:
@@ -15,6 +13,7 @@ def best_result(line):
             return time_stamp
         else:
             time_stamp += multiplier
+
 
 def main():
     line = []
